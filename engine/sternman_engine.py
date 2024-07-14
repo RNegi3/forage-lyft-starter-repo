@@ -1,11 +1,8 @@
-from battery import Battery
-from datetime import datetime
+from engine.Engine import Engine
 
-class SpindlerBattery(Battery):
-    def __init__(self, last_service_date):
-        self.last_service_date = last_service_date
+class SternmanEngine(Engine):
+    def __init__(self, warning_light_is_on):
+        self.warning_light_is_on = warning_light_is_on
 
     def needs_service(self):
-        service_threshold_date = self.last_service_date.replace(year=self.last_service_date.year + 2)
-        return datetime.today().date() > service_threshold_date
-
+        return self.warning_light_is_on
